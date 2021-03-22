@@ -1,2 +1,2 @@
-# eiopaRate
-Just a basic package to get all the EIOPA rates (including the latest ones) in your script.
+# eiopaR
+Just a basic package to get the EIOPA risk-free rates directly in your script.
