@@ -1,0 +1,165 @@
+#' @title Query EIOPA risk-free rate (RFR).
+#' @description This is a generic function to query EIOPA risk-free interest rate term structures.
+#'
+#' Note: this function is getting the data from an API. Your IP can be temporary or permanently blocked if too many queries are executed.
+#'
+#' For optimal performance of your script, we recommend to call this function only once by session and term structure and to store the data in the environment variables of your session.
+#'
+#' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
+#'
+#' @seealso get_rfr_with_va, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
+#' @export
+#' @include const.R
+#' @examples
+#' get_rfr("with_va", "FR", 2019, 12)
+#' get_rfr("no_va", "FR", 2019, 12)
+#' get_rfr("no_va_shock_up", "BE", 2020, 11)
+get_rfr <-
+  function(type = options_rfr_types(),
+           #c("with_va", "no_va", "no_va_shock_down", "no_va_shock_up", "with_va_shock_down", "with_va_shock_down", "va"),
+           region,
+           year = NULL,
+           month = NULL,
+           format = c("data.frame", "array", "data.table", "raw")) {
+    year <- ifelse(is.numeric(year), sprintf("year=%s", paste(year, collapse = ",")), "")
+    month <- ifelse(is.numeric(month), sprintf("month=%s", paste(month, collapse = ",")), "")
+
+    format <- format[1]
+
+    resp <- api_get(sprintf(PATH_GET_RFR(),
+                            type, region, year, month))
+
+    parse_rfr(resp, format)
+  }
+
+
+#' @title Query EIOPA RFR with volatility adjustment.
+#' @description This function query and returns the EIOPA risk-free interest rate term structures from an API.
+#'
+#' Note: this function is getting the data from an API. Your IP can be temporary or permanently blocked if too many queries are executed.
+#'
+#' For optimal performance of your script, we recommend to call this function only once by session and term structure and to store the data in the environment variables of your session.
+#'
+#' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
+#'
+#' @seealso get_rfr, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
+#' @export
+#' @include const.R
+#' @examples
+#' get_rfr_with_va("FR", 2019, 12)
+#' get_rfr_with_va("BE", 2020, 11)
+get_rfr_with_va <- function(region,
+                            year = NULL,
+                            month = NULL,
+                            format = c("data.frame", "array", "data.table")) {
+  type <- WITH_VA()
+  get_rfr(
+    type = type,
+    region = region,
+    year = year,
+    month = month
+  )
+}
+
+
+#' @title Query EIOPA RFR without volatility adjustment.
+#' @description This function query and returns the EIOPA risk-free interest rate term structures from an API.
+#'
+#' Note: this function is getting the data from an API. Your IP can be temporary or permanently blocked if too many queries are executed.
+#'
+#' For optimal performance of your script, we recommend to call this function only once by session and term structure and to store the data in the environment variables of your session.
+#'
+#' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
+#'
+#' @seealso get_rfr, get_rfr_with_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
+#' @export
+#' @include const.R
+#' @examples
+#' get_rfr_no_va("FR", 2019, 12)
+#' get_rfr_no_va("BE", 2020, 11)
+get_rfr_no_va <- function(region,
+                          year = NULL,
+                          month = NULL,
+                          format = c("data.frame", "array", "data.table")) {
+  type <- NO_VA()
+  get_rfr(
+    type = type,
+    region = region,
+    year = year,
+    month = month
+  )
+}
+
+#' @title Parse the risk free rates API response into dataframe
+#' @description This function is used to parse data received from the api to various formats.
+#' @param resp (list of list) A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
+#' @param format (string) One of the output format ("data.frame", "data.table", "array").
+parse_rfr <- function(resp, format){
+  if (format == "data.frame"){
+    return(parse_rfr_to_df(resp))
+  }
+}
+
+
+#' @title Parse the risk free rates API response into dataframe
+#' @description This function is used to parse data received from the api into data.frames.
+#' @param resp (list of list) A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
+parse_rfr_to_df <- function(resp) {
+  # Metadata
+  # --------
+  metadata <- lapply(resp$content, function(x) {
+    res <- list()
+    for (key in names(x))
+      if (key != "data")
+        res[[key]] <- x[[key]]
+
+    res
+  })
+
+  df_metadata <- as.data.frame(t(matrix(unlist(metadata),
+                                        nrow = length(
+                                          unlist(metadata[1])
+                                          ))),
+                               col.names = names(metadata[[1]]))
+
+  colnames(df_metadata) <- names(metadata[[1]])
+
+  # Data
+  # --------
+  data <- lapply(resp$content, function(x) {
+    x[["data"]]
+  })
+  data[[1]]
+
+  df_data <- as.data.frame(matrix(unlist(data),
+                                  nrow = length(unlist(data[1]))),
+                           stringsAsFactors = FALSE)
+
+  colnames(df_data) <- as.character(df_metadata$id)
+
+  structure(list(data = df_data,
+                 metadata = df_metadata,
+                 format="df"),
+            class="eiopa_rfr")
+}
+
+
+#' @title print risk free rates API response
+#' @description Display the response from the API in a readable format.
+#' @param x a response from the api
+#' @examples
+#' resp <- get_rfr_with_va("FR", 2019, 11)
+#' print(resp)
+#' print.eiopa_rfr(resp)
+#' @export
+print.eiopa_rfr <- function(x, ...) {
+
+  cat("<eiopa_rfr>\n")
+  for (i in 1:nrow(x$metadata)){
+    cat(sprintf("%s > %s ...\n",
+            x$metadata[i, "id"],
+            paste(x$data[1:3, i], collapse = ", ")))
+  }
+  invisible(x)
+}
+
