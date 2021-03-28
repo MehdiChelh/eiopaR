@@ -19,13 +19,13 @@ jobs:
     runs-on: ubuntu-18.04 #macOS-latest
     strategy:
       matrix:
-        r-version: [3.5, 3.6]
+        r-version: [3.5]
 
     steps:
       - uses: actions/checkout@master
       - uses: r-lib/actions/setup-r@v1
         with:
-          r-version: '3.5.3' # The R version to download (if necessary) and use.
+          r-version: '3.5.3'
       - run: Rscript -e 'print("hello")'
       - name: Install system dependencies
         run: sudo apt install -y libcurl4-openssl-dev
