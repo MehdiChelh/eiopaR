@@ -1,15 +1,14 @@
 Package: eiopaR
-Title: What the Package Does (One Line, Title Case)
+Title: Access to Data Produced by the EIOPA
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Mehdi",
+           family = "Echchelh",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "mehdi.echel@gmail.com",
+           comment = c())
+Description: This package provides data produced by EIOPA. Please note that the author of this package is not affiliated with EIOPA.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
