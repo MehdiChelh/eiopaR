@@ -16,18 +16,21 @@
 #' get_rfr("no_va_shock_up", "BE", 2020, 11)
 get_rfr <-
   function(type = options_rfr_types(),
-           #c("with_va", "no_va", "no_va_shock_down", "no_va_shock_up", "with_va_shock_down", "with_va_shock_down", "va"),
            region,
            year = NULL,
            month = NULL,
            format = c("data.frame", "array", "data.table", "raw")) {
-    year <- ifelse(is.numeric(year), sprintf("year=%s", paste(year, collapse = ",")), "")
-    month <- ifelse(is.numeric(month), sprintf("month=%s", paste(month, collapse = ",")), "")
+
+    year <- ifelse(is.numeric(year), paste(year, collapse = ","), "")
+    month <- ifelse(is.numeric(month), paste(month, collapse = ","), "")
 
     format <- format[1]
+    type <- type[1]
 
-    resp <- api_get(sprintf(PATH_GET_RFR(),
-                            type, region, year, month))
+    path <- PATH_GET_RFR(type, region,
+                         list(year=year, month=month))
+
+    resp <- api_get(sprintf(path))
 
     parse_rfr(resp, format)
   }
@@ -95,6 +98,7 @@ get_rfr_no_va <- function(region,
 #' @param resp (list of list) A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
 #' @param format (string) One of the output format ("data.frame", "data.table", "array").
 parse_rfr <- function(resp, format){
+
   if (format == "data.frame"){
     return(parse_rfr_to_df(resp))
   }
@@ -105,6 +109,15 @@ parse_rfr <- function(resp, format){
 #' @description This function is used to parse data received from the api into data.frames.
 #' @param resp (list of list) A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
 parse_rfr_to_df <- function(resp) {
+
+  # Ensure that the reponse contains data
+  if (length(resp$content) == 0){
+    return(structure(list(data = data.frame(),
+                          metadata = data.frame(),
+                          format="df"),
+                     class="eiopa_rfr"))
+  }
+
   # Metadata
   # --------
   metadata <- lapply(resp$content, function(x) {

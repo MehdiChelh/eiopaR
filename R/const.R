@@ -3,7 +3,15 @@ API_BASE_URL <- function() {
   "https://mehdiechchelh.com/api/rfr/"
 }
 
-PATH_GET_RFR <- function(){"/api/rfr/%s/%s/?%s&%s"}
+
+#' Build path to the RFR (risk-free rate) endpoint.
+PATH_GET_RFR <- function(type, region, params) {
+  sprintf("/api/rfr/%s/%s/?%s",
+          type,
+          region,
+          paste(names(params), params, sep = "=", collapse = "&"))
+}
+
 
 # Type of the risk-free-rate to query
 WITH_VA <- function() {"with_va"}
