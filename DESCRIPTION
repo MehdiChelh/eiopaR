@@ -11,6 +11,9 @@ Description: This package provides data produced by EIOPA. Please note that the 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports:
+    httr,
+    jsonlite,
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Collate: 

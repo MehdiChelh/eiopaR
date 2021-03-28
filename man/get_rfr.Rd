@@ -13,15 +13,15 @@ get_rfr(
 )
 }
 \arguments{
-\item{type}{\link{string} the type of the risk-free rate, see \code{options_rfr_types()} for the different options (examples: "with_va", "no_va").}
+\item{type}{the type of the risk-free rate, see \code{options_rfr_types()} for the different options (examples: "with_va", "no_va").}
 
-\item{region}{\link{string} the region to query (examples: "FR", "BE")}
+\item{region}{the region to query (examples: "FR", "BE")}
 
-\item{year}{\link{integer} the year of the RFR to query.}
+\item{year}{the year of the RFR to query.}
 
-\item{month}{\link{integer} the month of the RFR to query.}
+\item{month}{the month of the RFR to query.}
 
-\item{format}{\link{string} the format for the output data. Currently the only option is "data.frame".}
+\item{format}{the format for the output data. Currently the only option is "data.frame".}
 }
 \description{
 This is a generic function to query EIOPA risk-free interest rate term structures.

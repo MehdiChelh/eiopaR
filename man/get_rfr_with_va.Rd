@@ -7,13 +7,13 @@
 get_rfr_with_va(region, year = NULL, month = NULL, format = c("data.frame"))
 }
 \arguments{
-\item{region}{\link{string} the region to query (examples: "FR", "BE")}
+\item{region}{the region to query (examples: "FR", "BE")}
 
-\item{year}{\link{integer} the year of the RFR to query.}
+\item{year}{the year of the RFR to query.}
 
-\item{month}{\link{integer} the month of the RFR to query.}
+\item{month}{the month of the RFR to query.}
 
-\item{format}{\link{string} the format for the output data. Currently the only option is "data.frame".}
+\item{format}{the format for the output data. Currently the only option is "data.frame".}
 }
 \description{
 This function query and returns the EIOPA risk-free interest rate term structures from an API.
