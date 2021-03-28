@@ -6,6 +6,9 @@
 \usage{
 api_get(path)
 }
+\arguments{
+\item{path}{the path to an endpoint of the API}
+}
 \description{
 This function is a helper to make get requests to the API.
 }

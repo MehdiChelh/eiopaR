@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{a response from the api}
+
+\item{...}{further arguments passed to or from other methods.}
 }
 \description{
 Display the response from the API in a readable format.

@@ -1,5 +1,6 @@
 #' This function is a helper to make get requests to the API.
 #'
+#' @param path the path to an endpoint of the API
 #' @import httr
 #' @import jsonlite
 #' @include const.R

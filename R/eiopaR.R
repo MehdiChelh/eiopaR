@@ -177,6 +177,7 @@ parse_rfr_to_df <- function(resp) {
 #' @title print risk free rates API response
 #' @description Display the response from the API in a readable format.
 #' @param x a response from the api
+#' @param ... further arguments passed to or from other methods.
 #' @examples
 #' resp <- get_rfr_with_va("FR", 2019, 11)
 #' print(resp)
