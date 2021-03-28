@@ -12,6 +12,9 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lif
 
 A simple package to get the EIOPA rates directly in your script.
 
+**Note:** This package requires an internet connection in order to
+access the risk-free rates data.
+
 The data is accessed through an API which is regularly updated with the
 latest EIOPA rates.
 
@@ -76,7 +79,7 @@ plot(
 )
 ```
 
-<img src="man/figures/README-plot_data-1.png" width="100%" />
+<img src="man/figures/README-plot_data-1.png" width="65%" style="display: block; margin: auto;" />
 
 ## Contributing
 
