@@ -7,7 +7,7 @@
 
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
-[![R](https://github.com/MehdiChelh/eiopaR/actions/workflows/r.yml/badge.svg)](https://github.com/MehdiChelh/eiopaR/actions/workflows/r.yml)
+[![R-CMD-check](https://github.com/MehdiChelh/eiopaR/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/MehdiChelh/eiopaR/actions/workflows/check-standard.yaml)
 <!-- badges: end -->
 
 A simple package to get the EIOPA rates directly in your script.
