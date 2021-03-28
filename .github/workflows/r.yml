@@ -27,3 +27,11 @@ jobs:
         with:
           r-version: '3.5.3' # The R version to download (if necessary) and use.
       - run: Rscript -e 'print("hello")'
+      - name: Install dependencies
+        run: |
+          install.packages(c("remotes", "rcmdcheck", "devtools"))
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+      - name: Check
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        shell: Rscript {0}
