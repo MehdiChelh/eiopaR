@@ -22,6 +22,8 @@ knitr::opts_chunk$set(
 
 A simple package to get the EIOPA rates directly in your script.
 
+**Note:** This package requires an internet connection in order to access the risk-free rates data.
+
 The data is accessed through an API which is regularly updated with the latest EIOPA rates.
 
 **Note:** The API or the [author](mailto:mehdi.echel@gmail.com) of this package are not related to EIOPA.
@@ -60,7 +62,7 @@ head(rfr$data)
 ```
 
 
-```{r plot_data}
+```{r plot_data, out.width="65%", fig.align = 'center'}
 plot(
   rfr$data$`20171231_rfr_spot_with_va_FR`,
   ylab = "2017-12",
