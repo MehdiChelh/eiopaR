@@ -7,11 +7,11 @@
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
-#' @param type [string] the type of the risk-free rate, see `options_rfr_types()` for the different options (examples: "with_va", "no_va").
-#' @param region [string] the region to query (examples: "FR", "BE")
-#' @param year [integer] the year of the RFR to query.
-#' @param month [integer] the month of the RFR to query.
-#' @param format [string] the format for the output data. Currently the only option is "data.frame".
+#' @param type the type of the risk-free rate, see `options_rfr_types()` for the different options (examples: "with_va", "no_va").
+#' @param region the region to query (examples: "FR", "BE")
+#' @param year the year of the RFR to query.
+#' @param month the month of the RFR to query.
+#' @param format the format for the output data. Currently the only option is "data.frame".
 #' @seealso get_rfr_with_va, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
 #' @export
 #' @include const.R
@@ -54,10 +54,10 @@ get_rfr <-
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
-#' @param region [string] the region to query (examples: "FR", "BE")
-#' @param year [integer] the year of the RFR to query.
-#' @param month [integer] the month of the RFR to query.
-#' @param format [string] the format for the output data. Currently the only option is "data.frame".
+#' @param region the region to query (examples: "FR", "BE")
+#' @param year the year of the RFR to query.
+#' @param month the month of the RFR to query.
+#' @param format the format for the output data. Currently the only option is "data.frame".
 #' @seealso get_rfr, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
 #' @export
 #' @include const.R
@@ -87,10 +87,10 @@ get_rfr_with_va <- function(region,
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
-#' @param region [string] the region to query (examples: "FR", "BE")
-#' @param year [integer] the year of the RFR to query.
-#' @param month [integer] the month of the RFR to query.
-#' @param format [string] the format for the output data. Currently the only option is "data.frame".
+#' @param region the region to query (examples: "FR", "BE")
+#' @param year the year of the RFR to query.
+#' @param month the month of the RFR to query.
+#' @param format the format for the output data. Currently the only option is "data.frame".
 #' @seealso get_rfr, get_rfr_with_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
 #' @export
 #' @include const.R
@@ -112,8 +112,8 @@ get_rfr_no_va <- function(region,
 
 #' @title Parse the risk free rates API response into dataframe
 #' @description This function is used to parse data received from the api to various formats.
-#' @param resp (list of list) A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
-#' @param format (string) One of the output format ("data.frame", "data.table", "array").
+#' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
+#' @param format One of the output format ("data.frame" is currently the only option).
 parse_rfr <- function(resp, format){
 
   if (format == "data.frame"){
@@ -124,7 +124,7 @@ parse_rfr <- function(resp, format){
 
 #' @title Parse the risk free rates API response into dataframe
 #' @description This function is used to parse data received from the api into data.frames.
-#' @param resp (list of list) A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
+#' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
 parse_rfr_to_df <- function(resp) {
 
   # Ensure that the reponse contains data
@@ -180,7 +180,6 @@ parse_rfr_to_df <- function(resp) {
 #' @examples
 #' resp <- get_rfr_with_va("FR", 2019, 11)
 #' print(resp)
-#' print.eiopa_rfr(resp)
 #' @export
 print.eiopa_rfr <- function(x, ...) {
 

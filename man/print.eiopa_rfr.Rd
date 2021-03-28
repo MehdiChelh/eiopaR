@@ -15,5 +15,4 @@ Display the response from the API in a readable format.
 \examples{
 resp <- get_rfr_with_va("FR", 2019, 11)
 print(resp)
-print.eiopa_rfr(resp)
 }
