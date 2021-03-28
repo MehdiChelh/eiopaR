@@ -6,6 +6,9 @@
 \usage{
 PATH_GET_OPTIONS(field)
 }
+\arguments{
+\item{field}{the field name for the endpoint giving the available options}
+}
 \description{
 Build path to the options endpoint.
 }
