@@ -4,12 +4,16 @@
 \alias{get_rfr_no_va}
 \title{Query EIOPA RFR without volatility adjustment.}
 \usage{
-get_rfr_no_va(
-  region,
-  year = NULL,
-  month = NULL,
-  format = c("data.frame", "array", "data.table")
-)
+get_rfr_no_va(region, year = NULL, month = NULL, format = c("data.frame"))
+}
+\arguments{
+\item{region}{\link{string} the region to query (examples: "FR", "BE")}
+
+\item{year}{\link{integer} the year of the RFR to query.}
+
+\item{month}{\link{integer} the month of the RFR to query.}
+
+\item{format}{\link{string} the format for the output data. Currently the only option is "data.frame".}
 }
 \description{
 This function query and returns the EIOPA risk-free interest rate term structures from an API.

@@ -3,7 +3,6 @@
 #' @import httr
 #' @import jsonlite
 #' @include const.R
-#' @export
 api_get <- function(path) {
   url <- httr::modify_url(API_BASE_URL(), path = path)
 

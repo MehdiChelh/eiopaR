@@ -13,6 +13,12 @@ PATH_GET_RFR <- function(type, region, params) {
 }
 
 
+#' Build path to the options endpoint.
+PATH_GET_OPTIONS <- function(field) {
+  sprintf("/api/rfr/options/%s", field)
+}
+
+
 # Type of the risk-free-rate to query
 WITH_VA <- function() {"with_va"}
 NO_VA <- function() {"no_va"}

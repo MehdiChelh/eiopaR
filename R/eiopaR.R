@@ -7,11 +7,17 @@
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
+#' @param type [string] the type of the risk-free rate, see `options_rfr_types()` for the different options (examples: "with_va", "no_va").
+#' @param region [string] the region to query (examples: "FR", "BE")
+#' @param year [integer] the year of the RFR to query.
+#' @param month [integer] the month of the RFR to query.
+#' @param format [string] the format for the output data. Currently the only option is "data.frame".
 #' @seealso get_rfr_with_va, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
 #' @export
 #' @include const.R
 #' @examples
 #' get_rfr("with_va", "FR", 2019, 12)
+#' get_rfr("no_va", "FR", c(2016, 2019), 12)
 #' get_rfr("no_va", "FR", 2019, 12)
 #' get_rfr("no_va_shock_up", "BE", 2020, 11)
 get_rfr <-
@@ -19,11 +25,14 @@ get_rfr <-
            region,
            year = NULL,
            month = NULL,
-           format = c("data.frame", "array", "data.table", "raw")) {
+           format = c("data.frame")) {
+
+    if (length(region) != 1){
+      stop("'region' should be of length 1.")
+    }
 
     year <- ifelse(is.numeric(year), paste(year, collapse = ","), "")
     month <- ifelse(is.numeric(month), paste(month, collapse = ","), "")
-
     format <- format[1]
     type <- type[1]
 
@@ -45,6 +54,10 @@ get_rfr <-
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
+#' @param region [string] the region to query (examples: "FR", "BE")
+#' @param year [integer] the year of the RFR to query.
+#' @param month [integer] the month of the RFR to query.
+#' @param format [string] the format for the output data. Currently the only option is "data.frame".
 #' @seealso get_rfr, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
 #' @export
 #' @include const.R
@@ -54,7 +67,7 @@ get_rfr <-
 get_rfr_with_va <- function(region,
                             year = NULL,
                             month = NULL,
-                            format = c("data.frame", "array", "data.table")) {
+                            format = c("data.frame")) {
   type <- WITH_VA()
   get_rfr(
     type = type,
@@ -74,6 +87,10 @@ get_rfr_with_va <- function(region,
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
+#' @param region [string] the region to query (examples: "FR", "BE")
+#' @param year [integer] the year of the RFR to query.
+#' @param month [integer] the month of the RFR to query.
+#' @param format [string] the format for the output data. Currently the only option is "data.frame".
 #' @seealso get_rfr, get_rfr_with_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
 #' @export
 #' @include const.R
@@ -83,7 +100,7 @@ get_rfr_with_va <- function(region,
 get_rfr_no_va <- function(region,
                           year = NULL,
                           month = NULL,
-                          format = c("data.frame", "array", "data.table")) {
+                          format = c("data.frame")) {
   type <- NO_VA()
   get_rfr(
     type = type,
