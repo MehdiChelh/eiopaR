@@ -12,14 +12,15 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lif
 
 A simple package to get the EIOPA rates directly in your script.
 
-**Note:** This package requires an internet connection in order to
-access the risk-free rates data.
-
 The data is accessed through an API which is regularly updated with the
 latest EIOPA rates.
 
-**Note:** The API or the [author](mailto:mehdi.echel@gmail.com) of this
-package are not related to EIOPA.
+**Note:**
+
+-   This package requires an internet connection in order to access the
+    risk-free rates data.
+-   The API or the [author](mailto:mehdi.echel@gmail.com) of this
+    package are not related to EIOPA.
 
 ## Installation
 
@@ -38,8 +39,8 @@ devtools::install_github("MehdiChelh/eiopaR")
 
 ## Example
 
-You can get the risk-free rates with volatility adjustment with the
-following script:
+The following script gives you the risk-free rates with volatility
+adjustment:
 
 ``` r
 library(eiopaR)
@@ -57,7 +58,7 @@ results of your calls in the environment variables of your session (like
 in the example above `rfr <- get_...`). Your IP can be temporary or
 permanently blocked if too many queries are executed.
 
-The rates are then accessible in the form of a `data.frame`:
+The rates are then accessible as a `data.frame`:
 
 ``` r
 head(rfr$data)
