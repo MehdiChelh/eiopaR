@@ -2,12 +2,12 @@
 % Please edit documentation in R/eiopaR.R
 \name{parse_rfr}
 \alias{parse_rfr}
-\title{Parse the risk free rates API response into dataframe}
+\title{Parse the risk free rates API response}
 \usage{
 parse_rfr(resp, format)
 }
 \arguments{
-\item{resp}{A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.}
+\item{resp}{A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.}
 
 \item{format}{One of the output format ("data.frame" is currently the only option).}
 }

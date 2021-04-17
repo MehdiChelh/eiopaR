@@ -7,11 +7,11 @@
 get_rfr_with_va(region, year = NULL, month = NULL, format = c("data.frame"))
 }
 \arguments{
-\item{region}{the region to query (examples: "FR", "BE")}
+\item{region}{the region to query (examples: "FR". see \code{get_options("region")}).}
 
-\item{year}{the year of the RFR to query.}
+\item{year}{the year of the RFR.}
 
-\item{month}{the month of the RFR to query.}
+\item{month}{the month of the RFR.}
 
 \item{format}{the format for the output data. Currently the only option is "data.frame".}
 }
@@ -20,7 +20,7 @@ This function query and returns the EIOPA risk-free interest rate term structure
 
 Note: this function is getting the data from an API. Your IP can be temporary or permanently blocked if too many queries are executed.
 
-For optimal performance of your script, we recommend to call this function only once by session and term structure and to store the data in the environment variables of your session.
+For optimal performance, we recommend to limit the number of calls to this function.
 
 EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 }
@@ -29,5 +29,5 @@ get_rfr_with_va("FR", 2019, 12)
 get_rfr_with_va("BE", 2020, 11)
 }
 \seealso{
-get_rfr, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
+get_rfr, get_rfr_no_va
 }

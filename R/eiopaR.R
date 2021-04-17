@@ -1,18 +1,18 @@
 #' @title Query EIOPA risk-free rate (RFR).
-#' @description This is a generic function to query EIOPA risk-free interest rate term structures.
+#' @description This function query and returns the EIOPA risk-free interest rate term structures from an API.
 #'
 #' Note: this function is getting the data from an API. Your IP can be temporary or permanently blocked if too many queries are executed.
 #'
-#' For optimal performance of your script, we recommend to call this function only once by session and term structure and to store the data in the environment variables of your session.
+#' For optimal performance, we recommend to limit the number of calls to this function.
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
 #' @param type the type of the risk-free rate, see `options_rfr_types()` for the different options (examples: "with_va", "no_va").
-#' @param region the region to query (examples: "FR", "BE")
-#' @param year the year of the RFR to query.
-#' @param month the month of the RFR to query.
+#' @param region the region to query (examples: "FR". see `get_options("region")`).
+#' @param year the year of the RFR.
+#' @param month the month of the RFR.
 #' @param format the format for the output data. Currently the only option is "data.frame".
-#' @seealso get_rfr_with_va, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
+#' @seealso get_rfr_with_va, get_rfr_no_va
 #' @export
 #' @include const.R
 #' @examples
@@ -50,15 +50,15 @@ get_rfr <-
 #'
 #' Note: this function is getting the data from an API. Your IP can be temporary or permanently blocked if too many queries are executed.
 #'
-#' For optimal performance of your script, we recommend to call this function only once by session and term structure and to store the data in the environment variables of your session.
+#' For optimal performance, we recommend to limit the number of calls to this function.
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
-#' @param region the region to query (examples: "FR", "BE")
-#' @param year the year of the RFR to query.
-#' @param month the month of the RFR to query.
+#' @param region the region to query (examples: "FR". see `get_options("region")`).
+#' @param year the year of the RFR.
+#' @param month the month of the RFR.
 #' @param format the format for the output data. Currently the only option is "data.frame".
-#' @seealso get_rfr, get_rfr_no_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
+#' @seealso get_rfr, get_rfr_no_va
 #' @export
 #' @include const.R
 #' @examples
@@ -78,20 +78,20 @@ get_rfr_with_va <- function(region,
 }
 
 
-#' @title Query EIOPA RFR without volatility adjustment.
+#' @title Query EIOPA RFR without volatility adjustment
 #' @description This function query and returns the EIOPA risk-free interest rate term structures from an API.
 #'
 #' Note: this function is getting the data from an API. Your IP can be temporary or permanently blocked if too many queries are executed.
 #'
-#' For optimal performance of your script, we recommend to call this function only once by session and term structure and to store the data in the environment variables of your session.
+#' For optimal performance, we recommend to limit the number of calls to this function.
 #'
 #' EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 #'
-#' @param region the region to query (examples: "FR", "BE")
-#' @param year the year of the RFR to query.
-#' @param month the month of the RFR to query.
+#' @param region the region to query (examples: "FR". see `get_options("region")`).
+#' @param year the year of the RFR.
+#' @param month the month of the RFR.
 #' @param format the format for the output data. Currently the only option is "data.frame".
-#' @seealso get_rfr, get_rfr_with_va, get_rfr_with_va_shock_up, get_rfr_with_va_shock_down, get_rfr_no_va_shock_up, get_rfr_no_down
+#' @seealso get_rfr, get_rfr_with_va
 #' @export
 #' @include const.R
 #' @examples
@@ -110,9 +110,10 @@ get_rfr_no_va <- function(region,
   )
 }
 
-#' @title Parse the risk free rates API response into dataframe
+
+#' @title Parse the risk free rates API response
 #' @description This function is used to parse data received from the api to various formats.
-#' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
+#' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.
 #' @param format One of the output format ("data.frame" is currently the only option).
 parse_rfr <- function(resp, format){
 
@@ -122,9 +123,9 @@ parse_rfr <- function(resp, format){
 }
 
 
-#' @title Parse the risk free rates API response into dataframe
-#' @description This function is used to parse data received from the api into data.frames.
-#' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.
+#' @title Parse the risk free rates API response into a dataframe
+#' @description This function is used to parse data received from the api into data.frame.
+#' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.
 parse_rfr_to_df <- function(resp) {
 
   # Ensure that the reponse contains data
@@ -174,8 +175,20 @@ parse_rfr_to_df <- function(resp) {
 }
 
 
-#' @title print risk free rates API response
-#' @description Display the response from the API in a readable format.
+#' @title Options available
+#' @description Returns the available options for a specific field.
+#' @param field a string like "region", "year" or "month"
+#' @examples
+#' get_options("region")
+#' @export
+get_options <- function(field) {
+  resp <- api_get(PATH_GET_OPTIONS(field))
+  return(unlist(resp$content))
+}
+
+
+#' @title Print eiopa_rfr object
+#' @description Print eiopa_rfr object in a readable format
 #' @param x a response from the api
 #' @param ... further arguments passed to or from other methods.
 #' @examples

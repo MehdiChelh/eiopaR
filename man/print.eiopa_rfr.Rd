@@ -2,7 +2,7 @@
 % Please edit documentation in R/eiopaR.R
 \name{print.eiopa_rfr}
 \alias{print.eiopa_rfr}
-\title{print risk free rates API response}
+\title{Print eiopa_rfr object}
 \usage{
 \method{print}{eiopa_rfr}(x, ...)
 }
@@ -12,7 +12,7 @@
 \item{...}{further arguments passed to or from other methods.}
 }
 \description{
-Display the response from the API in a readable format.
+Print eiopa_rfr object in a readable format
 }
 \examples{
 resp <- get_rfr_with_va("FR", 2019, 11)

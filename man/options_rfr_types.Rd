@@ -2,10 +2,14 @@
 % Please edit documentation in R/const.R
 \name{options_rfr_types}
 \alias{options_rfr_types}
-\title{This returns a list of the available options for the risk-free-rates curves.}
+\title{Available curves}
 \usage{
 options_rfr_types()
 }
 \description{
-This returns a list of the available options for the risk-free-rates curves.
+This function returns a list of the available options for the risk-free-rates curves.
+(see argument "type" for \code{get_rfr})
+}
+\seealso{
+get_rfr
 }

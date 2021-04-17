@@ -7,9 +7,9 @@
 PATH_GET_RFR(type, region, params)
 }
 \arguments{
-\item{type}{see the list of types available by the api}
+\item{type}{one of the types available by the api (see \code{options_rfr_types()})}
 
-\item{region}{see the list of regions available by the api}
+\item{region}{one of the regions available by the api (see \code{get_options("region")})}
 
 \item{params}{additionnal GET parameters}
 }

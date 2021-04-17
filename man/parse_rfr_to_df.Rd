@@ -2,13 +2,13 @@
 % Please edit documentation in R/eiopaR.R
 \name{parse_rfr_to_df}
 \alias{parse_rfr_to_df}
-\title{Parse the risk free rates API response into dataframe}
+\title{Parse the risk free rates API response into a dataframe}
 \usage{
 parse_rfr_to_df(resp)
 }
 \arguments{
-\item{resp}{A response from the API (status 200, type/JSON). The response should have a "data" keyword with value an array containing the risk free rates.}
+\item{resp}{A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.}
 }
 \description{
-This function is used to parse data received from the api into data.frames.
+This function is used to parse data received from the api into data.frame.
 }

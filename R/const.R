@@ -5,8 +5,8 @@ API_BASE_URL <- function() {
 
 
 #' Build path to the RFR (risk-free rate) endpoint.
-#' @param type see the list of types available by the api
-#' @param region see the list of regions available by the api
+#' @param type one of the types available by the api (see `options_rfr_types()`)
+#' @param region one of the regions available by the api (see `get_options("region")`)
 #' @param params additionnal GET parameters
 PATH_GET_RFR <- function(type, region, params) {
   sprintf("/api/rfr/%s/%s/?%s",
@@ -32,7 +32,11 @@ WITH_VA_SHOCK_DOWN <- function() {"with_va_shock_down"}
 WITH_VA_SHOCK_UP <- function() {"with_va_shock_down"}
 VA <- function() {"va"}
 
-#' This returns a list of the available options for the risk-free-rates curves.
+#' @title Available curves
+#' @description This function returns a list of the available options for the risk-free-rates curves.
+#' (see argument "type" for `get_rfr`)
+#' @example options_rfr_types()
+#' @seealso get_rfr
 #' @export
 options_rfr_types <- function(){
   c(WITH_VA(),
