@@ -1,5 +1,5 @@
 Package: eiopaR
-Title: Access to RFR Curves Produced by the EIOPA
+Title: Access to RFR (Risk-Free Rate) Curves Produced by the EIOPA
 Version: 0.1.0
 Authors@R:
     person(given = "Mehdi",
@@ -7,10 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "mehdi.echel@gmail.com",
            comment = c())
-Description: Provides EIOPA risk-free rates. Please note that the author of this package is not affiliated with EIOPA.
+Description: Provides EIOPA (European Insurance And Occupational Pensions Authority) risk-free rates. Please note that the author of this package is not affiliated with EIOPA.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Imports:
     httr,
     jsonlite,

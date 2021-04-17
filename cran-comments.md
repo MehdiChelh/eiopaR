@@ -10,3 +10,6 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+* EIOPA and RFR are not mis-spelled words in DESCRIPTION : 
+*   - EIOPA: European Insurance And Occupational Pensions Authority
+*   - RFR: Risk-Free Rate
