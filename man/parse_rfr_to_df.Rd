@@ -10,5 +10,5 @@ parse_rfr_to_df(resp)
 \item{resp}{A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.}
 }
 \description{
-This function is used to parse data received from the api into data.frame.
+This function is used to parse data received from the API into data.frame.
 }

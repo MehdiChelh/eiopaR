@@ -7,11 +7,11 @@
 PATH_GET_RFR(type, region, params)
 }
 \arguments{
-\item{type}{one of the types available by the api (see \code{options_rfr_types()})}
+\item{type}{one of the types available by the API (see \code{options_rfr_types()})}
 
-\item{region}{one of the regions available by the api (see \code{get_options("region")})}
+\item{region}{one of the regions available by the API (see \code{get_options("region")})}
 
-\item{params}{additionnal GET parameters}
+\item{params}{additional GET parameters}
 }
 \description{
 Build path to the RFR (risk-free rate) endpoint.

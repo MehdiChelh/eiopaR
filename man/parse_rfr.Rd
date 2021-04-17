@@ -12,5 +12,5 @@ parse_rfr(resp, format)
 \item{format}{One of the output format ("data.frame" is currently the only option).}
 }
 \description{
-This function is used to parse data received from the api to various formats.
+This function is used to parse data received from the API to various formats.
 }

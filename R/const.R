@@ -5,9 +5,9 @@ API_BASE_URL <- function() {
 
 
 #' Build path to the RFR (risk-free rate) endpoint.
-#' @param type one of the types available by the api (see `options_rfr_types()`)
-#' @param region one of the regions available by the api (see `get_options("region")`)
-#' @param params additionnal GET parameters
+#' @param type one of the types available by the API (see `options_rfr_types()`)
+#' @param region one of the regions available by the API (see `get_options("region")`)
+#' @param params additional GET parameters
 PATH_GET_RFR <- function(type, region, params) {
   sprintf("/api/rfr/%s/%s/?%s",
           type,

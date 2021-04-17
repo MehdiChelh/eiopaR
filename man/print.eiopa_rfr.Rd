@@ -7,7 +7,7 @@
 \method{print}{eiopa_rfr}(x, ...)
 }
 \arguments{
-\item{x}{a response from the api}
+\item{x}{a response from the API}
 
 \item{...}{further arguments passed to or from other methods.}
 }

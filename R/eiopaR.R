@@ -112,7 +112,7 @@ get_rfr_no_va <- function(region,
 
 
 #' @title Parse the risk free rates API response
-#' @description This function is used to parse data received from the api to various formats.
+#' @description This function is used to parse data received from the API to various formats.
 #' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.
 #' @param format One of the output format ("data.frame" is currently the only option).
 parse_rfr <- function(resp, format){
@@ -124,7 +124,7 @@ parse_rfr <- function(resp, format){
 
 
 #' @title Parse the risk free rates API response into a dataframe
-#' @description This function is used to parse data received from the api into data.frame.
+#' @description This function is used to parse data received from the API into data.frame.
 #' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.
 parse_rfr_to_df <- function(resp) {
 
@@ -189,7 +189,7 @@ get_options <- function(field) {
 
 #' @title Print eiopa_rfr object
 #' @description Print eiopa_rfr object in a readable format
-#' @param x a response from the api
+#' @param x a response from the API
 #' @param ... further arguments passed to or from other methods.
 #' @examples
 #' resp <- get_rfr_with_va("FR", 2019, 11)
