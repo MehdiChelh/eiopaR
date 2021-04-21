@@ -6,6 +6,9 @@
 \usage{
 API_BASE_URL()
 }
+\value{
+A string: the base URL to the API.
+}
 \description{
 Base URL to the API.
 }

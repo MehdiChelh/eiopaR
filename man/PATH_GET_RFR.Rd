@@ -13,6 +13,9 @@ PATH_GET_RFR(type, region, params)
 
 \item{params}{additional GET parameters}
 }
+\value{
+A string: the path to the RFR endpoint.
+}
 \description{
 Build path to the RFR (risk-free rate) endpoint.
 }

@@ -9,6 +9,9 @@ get_options(field)
 \arguments{
 \item{field}{a string like "region", "year" or "month"}
 }
+\value{
+A vector of type "character": the list of the available options for \code{field}.
+}
 \description{
 Returns the available options for a specific field.
 }

@@ -1,6 +1,12 @@
 #' This function is a helper to make get requests to the API.
 #'
 #' @param path the path to an endpoint of the API
+#' @return A list of class "eiopaR_api". It has at least the following components:
+#' \describe{
+#'   \item{content}{the JSON content parsed to a list.}
+#'   \item{path}{the path to the requested endpoint.}
+#'   \item{response}{the raw response.}
+#' }
 #' @import httr
 #' @import jsonlite
 #' @include const.R

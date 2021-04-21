@@ -15,6 +15,13 @@ get_rfr_no_va(region, year = NULL, month = NULL, format = c("data.frame"))
 
 \item{format}{the format for the output data. Currently the only option is "data.frame".}
 }
+\value{
+A list of class "eiopa_rfr", with at least the following components:
+\describe{
+\item{data}{a data.frame containing the risk-free rate curves.}
+\item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+}
+}
 \description{
 This function query and returns the EIOPA risk-free interest rate term structures from an API.
 

@@ -13,3 +13,10 @@
 * EIOPA and RFR are not mis-spelled words in DESCRIPTION : 
 *   - EIOPA: European Insurance And Occupational Pensions Authority
 *   - RFR: Risk-Free Rate
+
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Provided a link to the used webservices in the description field of the DESCRIPTION file in the form <https:...>
+
+* Added \value to .Rd files and explained the functions results in the documentation.

@@ -6,6 +6,9 @@
 \usage{
 options_rfr_types()
 }
+\value{
+vector of strings: the different options available.
+}
 \description{
 This function returns a list of the available options for the risk-free-rates curves.
 (see argument "type" for \code{get_rfr})

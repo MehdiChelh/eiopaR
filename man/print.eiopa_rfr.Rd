@@ -11,6 +11,13 @@
 
 \item{...}{further arguments passed to or from other methods.}
 }
+\value{
+An instance of class "eiopa_rfr". It is a list with at least the following components:
+\describe{
+\item{data}{a data.frame containing the risk-free rate curves.}
+\item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+}
+}
 \description{
 Print eiopa_rfr object in a readable format
 }

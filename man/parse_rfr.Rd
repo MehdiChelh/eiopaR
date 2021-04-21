@@ -11,6 +11,13 @@ parse_rfr(resp, format)
 
 \item{format}{One of the output format ("data.frame" is currently the only option).}
 }
+\value{
+A list of class "eiopa_rfr", with at least the following components:
+\describe{
+\item{data}{a data.frame containing the risk-free rate curves.}
+\item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+}
+}
 \description{
 This function is used to parse data received from the API to various formats.
 }

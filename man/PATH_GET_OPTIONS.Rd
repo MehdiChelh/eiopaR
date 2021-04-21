@@ -9,6 +9,9 @@ PATH_GET_OPTIONS(field)
 \arguments{
 \item{field}{the field name for the endpoint giving the available options}
 }
+\value{
+A string: the path to the options endpoint.
+}
 \description{
 Build path to the options endpoint.
 }

@@ -12,6 +12,11 @@
 #' @param year the year of the RFR.
 #' @param month the month of the RFR.
 #' @param format the format for the output data. Currently the only option is "data.frame".
+#' @return A list of class "eiopa_rfr", with components:
+#' \describe{
+#'   \item{data}{a data.frame containing the risk-free rate curves.}
+#'   \item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+#' }
 #' @seealso get_rfr_with_va, get_rfr_no_va
 #' @export
 #' @include const.R
@@ -58,6 +63,11 @@ get_rfr <-
 #' @param year the year of the RFR.
 #' @param month the month of the RFR.
 #' @param format the format for the output data. Currently the only option is "data.frame".
+#' @return A list of class "eiopa_rfr", with components:
+#' \describe{
+#'   \item{data}{a data.frame containing the risk-free rate curves.}
+#'   \item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+#' }
 #' @seealso get_rfr, get_rfr_no_va
 #' @export
 #' @include const.R
@@ -91,6 +101,11 @@ get_rfr_with_va <- function(region,
 #' @param year the year of the RFR.
 #' @param month the month of the RFR.
 #' @param format the format for the output data. Currently the only option is "data.frame".
+#' @return A list of class "eiopa_rfr", with at least the following components:
+#' \describe{
+#'   \item{data}{a data.frame containing the risk-free rate curves.}
+#'   \item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+#' }
 #' @seealso get_rfr, get_rfr_with_va
 #' @export
 #' @include const.R
@@ -115,6 +130,11 @@ get_rfr_no_va <- function(region,
 #' @description This function is used to parse data received from the API to various formats.
 #' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.
 #' @param format One of the output format ("data.frame" is currently the only option).
+#' @return A list of class "eiopa_rfr", with at least the following components:
+#' \describe{
+#'   \item{data}{a data.frame containing the risk-free rate curves.}
+#'   \item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+#' }
 parse_rfr <- function(resp, format){
 
   if (format == "data.frame"){
@@ -126,6 +146,11 @@ parse_rfr <- function(resp, format){
 #' @title Parse the risk free rates API response into a dataframe
 #' @description This function is used to parse data received from the API into data.frame.
 #' @param resp A response from the API (status 200, type/JSON). The response should have a "data" keyword with the value of an array containing the risk free rates.
+#' @return A list of class "eiopa_rfr", with at least the following components:
+#' \describe{
+#'   \item{data}{a data.frame containing the risk-free rate curves.}
+#'   \item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+#' }
 parse_rfr_to_df <- function(resp) {
 
   # Ensure that the reponse contains data
@@ -178,6 +203,7 @@ parse_rfr_to_df <- function(resp) {
 #' @title Options available
 #' @description Returns the available options for a specific field.
 #' @param field a string like "region", "year" or "month"
+#' @return A vector of type "character": the list of the available options for `field`.
 #' @examples
 #' get_options("region")
 #' @export
@@ -191,6 +217,11 @@ get_options <- function(field) {
 #' @description Print eiopa_rfr object in a readable format
 #' @param x a response from the API
 #' @param ... further arguments passed to or from other methods.
+#' @return An instance of class "eiopa_rfr". It is a list with at least the following components:
+#' \describe{
+#'   \item{data}{a data.frame containing the risk-free rate curves.}
+#'   \item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
+#' }
 #' @examples
 #' resp <- get_rfr_with_va("FR", 2019, 11)
 #' print(resp)
