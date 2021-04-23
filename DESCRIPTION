@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "mehdi.echel@gmail.com",
            comment = c())
-Description: Provides EIOPA (European Insurance And Occupational Pensions Authority) risk-free rates. Please note that the author of this package is not affiliated with EIOPA. The data is accessed through a REST API available at <https://mehdiechchelh.com/api>.
+Description: Provides EIOPA (European Insurance And Occupational Pensions Authority) risk-free rates. Please note that the author of this package is not affiliated with EIOPA. The data is accessed through a REST API available at <https://mehdiechchelh.com/api/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Imports:
