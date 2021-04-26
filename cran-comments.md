@@ -17,6 +17,6 @@
 ## Resubmission
 This is a resubmission. In this version I have:
 
-* Provided a link to the used webservices in the description field of the DESCRIPTION file in the form <https:...>
+* Provided a link to the used webservices in the description field of the DESCRIPTION file in the form <https:...> (<https://mehdiechchelh.com/api/>)
 
 * Added \value to .Rd files and explained the functions results in the documentation.
