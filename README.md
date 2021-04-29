@@ -8,6 +8,7 @@
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![R-CMD-check](https://github.com/MehdiChelh/eiopaR/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/MehdiChelh/eiopaR/actions/workflows/check-standard.yaml)
+[![](https://www.r-pkg.org/badges/version/eiopaR?color=green)](https://cran.r-project.org/package=eiopaR)
 <!-- badges: end -->
 
 A simple package to get the EIOPA rates directly in your script.
@@ -24,10 +25,12 @@ latest EIOPA rates.
 
 ## Installation
 
-<!-- You can install the released version of eiopaR from [CRAN](https://CRAN.R-project.org) with: -->
-<!-- ``` r -->
-<!-- install.packages("eiopaR") -->
-<!-- ``` -->
+You can install the released version of eiopaR from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("eiopaR")
+```
 
 You can install the development version from
 [GitHub](https://github.com/) with:
@@ -36,6 +39,14 @@ You can install the development version from
 # install.packages("devtools")
 devtools::install_github("MehdiChelh/eiopaR")
 ```
+
+**Note:** If you use Excel, you can also use the add-in
+[EIOPA\_API.xlam](https://github.com/MehdiChelh/eiopaR/raw/master/EIOPA_API.xlam)
+of this repository (in the Excel ribbon:
+`Developer > Add-ins > Browse > EIOPA_API.xlam`). It imports a formula
+called `EIOPA` that can be used in Excel as follows:
+`EIOPA("with_va", "FR", 2019, 12)` or also
+`EIOPA("no_va", "FR", 2019, 12)`.
 
 ## Example
 
