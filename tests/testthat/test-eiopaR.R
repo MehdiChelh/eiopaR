@@ -1,4 +1,8 @@
 test_that("Check API calls : No VA - 1 curve", {
+
+  skip_if_offline("mehdiechchelh.com")
+  skip_on_cran()
+
   resp <- get_rfr_no_va(region = "FR",
                         year = 2018,
                         month = 12)
@@ -10,6 +14,10 @@ test_that("Check API calls : No VA - 1 curve", {
 
 
 test_that("Check API calls : No VA - 4 curves (2 different years/months)", {
+
+  skip_if_offline("mehdiechchelh.com")
+  skip_on_cran()
+
   resp <- get_rfr_no_va(region = "FR",
                         year = c(2018, 2019),
                         month = c(8, 9))
@@ -26,6 +34,10 @@ test_that("Check API calls : No VA - 4 curves (2 different years/months)", {
 
 
 test_that("Check API calls : With VA - 4 curves (2 different years/months)", {
+
+  skip_if_offline("mehdiechchelh.com")
+  skip_on_cran()
+
   resp <- get_rfr_with_va(region = "FR",
                           year = c(2018, 2019),
                           month = c(8, 9))

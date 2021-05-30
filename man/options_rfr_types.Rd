@@ -13,6 +13,9 @@ vector of strings: the different options available.
 This function returns a list of the available options for the risk-free-rates curves.
 (see argument "type" for \code{get_rfr})
 }
+\examples{
+options_rfr_types()
+}
 \seealso{
 get_rfr
 }

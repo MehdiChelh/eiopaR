@@ -42,8 +42,6 @@ EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-ra
 \examples{
 get_rfr("with_va", "FR", 2019, 12)
 get_rfr("no_va", "FR", c(2016, 2019), 12)
-get_rfr("no_va", "FR", 2019, 12)
-get_rfr("no_va_shock_up", "BE", 2020, 11)
 }
 \seealso{
 get_rfr_with_va, get_rfr_no_va

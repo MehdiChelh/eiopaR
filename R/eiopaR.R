@@ -23,8 +23,6 @@
 #' @examples
 #' get_rfr("with_va", "FR", 2019, 12)
 #' get_rfr("no_va", "FR", c(2016, 2019), 12)
-#' get_rfr("no_va", "FR", 2019, 12)
-#' get_rfr("no_va_shock_up", "BE", 2020, 11)
 get_rfr <-
   function(type = options_rfr_types(),
            region,

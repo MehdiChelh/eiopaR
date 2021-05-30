@@ -39,7 +39,8 @@ VA <- function() {"va"}
 #' @description This function returns a list of the available options for the risk-free-rates curves.
 #' (see argument "type" for `get_rfr`)
 #' @return vector of strings: the different options available.
-#' @example options_rfr_types()
+#' @examples
+#' options_rfr_types()
 #' @seealso get_rfr
 #' @export
 options_rfr_types <- function(){

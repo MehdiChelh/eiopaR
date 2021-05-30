@@ -8,14 +8,37 @@
 #'   \item{response}{the raw response.}
 #' }
 #' @import httr
+#' @importFrom curl has_internet
 #' @import jsonlite
 #' @include const.R
 api_get <- function(path) {
-  url <- httr::modify_url(API_BASE_URL(), path = path)
+  url <- modify_url(API_BASE_URL(), path = path)
 
-  resp <- GET(url)
+  # First check internet connection
+  if (!has_internet()) {
+    message("No internet connection.")
+    return(invisible(NULL))
+  }
+
+  resp <- try_GET(url)
+
+  is_response <- function(x) {
+    class(x) == "response"
+  }
+
+  # Then try for timeout problems
+  if (!is_response(resp)) {
+    message(resp)
+    return(invisible(NULL))
+  }
+  # Then stop if status > 400
+  if (http_error(resp)) {
+    message_for_status(resp)
+    return(invisible(NULL))
+  }
+
   if (http_type(resp) != "application/json") {
-    stop("API did not return json", call. = FALSE)
+    message("API did not return json", call. = FALSE)
   }
 
   raw_content <- content(resp, "text", encoding = "UTF-8")
@@ -40,4 +63,17 @@ api_get <- function(path) {
   ),
   class = "eiopaR_api")
 
+}
+
+
+#' Wrapper for GET requests
+#' @param x the url to request
+#' @param ... additional parameters passed to the GET function.
+#' @return The result of the GET request.
+try_GET <- function(x, ...) {
+  tryCatch(
+    GET(url = x, timeout(2), ...),
+    error = function(e) conditionMessage(e),
+    warning = function(w) conditionMessage(w)
+  )
 }

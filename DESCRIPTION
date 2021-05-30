@@ -1,6 +1,6 @@
 Package: eiopaR
 Title: Access to RFR (Risk-Free Rate) Curves Produced by the EIOPA
-Version: 0.1.0
+Version: 0.1.1
 Authors@R:
     person(given = "Mehdi",
            family = "Echchelh",
@@ -13,6 +13,7 @@ Encoding: UTF-8
 Imports:
     httr,
     jsonlite,
+    curl,
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Collate:
