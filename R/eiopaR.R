@@ -21,8 +21,10 @@
 #' @export
 #' @include const.R
 #' @examples
+#' \dontrun{
 #' get_rfr("with_va", "FR", 2019, 12)
 #' get_rfr("no_va", "FR", c(2016, 2019), 12)
+#' }
 get_rfr <-
   function(type = options_rfr_types(),
            region,
@@ -70,8 +72,10 @@ get_rfr <-
 #' @export
 #' @include const.R
 #' @examples
+#' \dontrun{
 #' get_rfr_with_va("FR", 2019, 12)
 #' get_rfr_with_va("BE", 2020, 11)
+#' }
 get_rfr_with_va <- function(region,
                             year = NULL,
                             month = NULL,
@@ -108,8 +112,10 @@ get_rfr_with_va <- function(region,
 #' @export
 #' @include const.R
 #' @examples
+#' \dontrun{
 #' get_rfr_no_va("FR", 2019, 12)
 #' get_rfr_no_va("BE", 2020, 11)
+#' }
 get_rfr_no_va <- function(region,
                           year = NULL,
                           month = NULL,
@@ -203,7 +209,9 @@ parse_rfr_to_df <- function(resp) {
 #' @param field a string like "region", "year" or "month"
 #' @return A vector of type "character": the list of the available options for `field`.
 #' @examples
+#' \dontrun{
 #' get_options("region")
+#' }
 #' @export
 get_options <- function(field) {
   resp <- api_get(PATH_GET_OPTIONS(field))
@@ -221,8 +229,10 @@ get_options <- function(field) {
 #'   \item{metadata}{a data.frame containing metadata about the risk-free rate curves.}
 #' }
 #' @examples
+#' \dontrun{
 #' resp <- get_rfr_with_va("FR", 2019, 11)
 #' print(resp)
+#' }
 #' @export
 print.eiopa_rfr <- function(x, ...) {
 

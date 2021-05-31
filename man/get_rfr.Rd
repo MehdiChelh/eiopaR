@@ -40,8 +40,10 @@ For optimal performance, we recommend to limit the number of calls to this funct
 EIOPA website : https://www.eiopa.europa.eu/tools-and-data/risk-free-interest-rate-term-structures_en
 }
 \examples{
+\dontrun{
 get_rfr("with_va", "FR", 2019, 12)
 get_rfr("no_va", "FR", c(2016, 2019), 12)
+}
 }
 \seealso{
 get_rfr_with_va, get_rfr_no_va

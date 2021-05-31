@@ -22,6 +22,8 @@ An instance of class "eiopa_rfr". It is a list with at least the following compo
 Print eiopa_rfr object in a readable format
 }
 \examples{
+\dontrun{
 resp <- get_rfr_with_va("FR", 2019, 11)
 print(resp)
+}
 }

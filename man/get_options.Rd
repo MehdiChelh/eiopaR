@@ -16,5 +16,7 @@ A vector of type "character": the list of the available options for \code{field}
 Returns the available options for a specific field.
 }
 \examples{
+\dontrun{
 get_options("region")
+}
 }
