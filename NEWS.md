@@ -4,4 +4,4 @@
 
 # eiopaR 0.1.1
 
-* Updated the behaviour of the API calls if the ressource is not available or has changed (no more "ERROR" or "WARNING").
+* Updated the behavior of the API calls if the ressource is not available or has changed (no more "ERROR" or "WARNING").
